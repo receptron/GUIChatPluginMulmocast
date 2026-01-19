@@ -56,7 +56,7 @@
               >
                 ‹
               </button>
-              <MulmoView
+              <MulmoViewer
                 ref="viewerRef"
                 :key="`viewer-${currentPage}`"
                 v-model:audio-lang="audioLang"
@@ -120,18 +120,7 @@ import { ref, computed, onUnmounted, watch } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import type { ToolResult } from "gui-chat-protocol";
 import type { MulmocastToolData } from "../core/types";
-import { MulmoView } from "mulmocast-viewer";
-
-// Define ViewerData interface locally since it's not exported
-interface ViewerBeat {
-  text?: string;
-  audio?: string;
-  image?: string;
-}
-
-interface ViewerData {
-  beats: ViewerBeat[];
-}
+import { MulmoViewer, type ViewerData } from "mulmocast-viewer";
 
 const props = defineProps<{
   selectedResult: ToolResult<MulmocastToolData> | null;
@@ -149,7 +138,7 @@ const emit = defineEmits<{
 }>();
 
 const movieUrl = ref<string | null>(null);
-const videoEl = ref<HTMLVideoElement | null>(null);
+// const videoEl = ref<HTMLVideoElement | null>(null);
 const isGeneratingMovie = ref(false);
 const movieError = ref<string | null>(null);
 const parseError = ref<string | null>(null);
@@ -159,7 +148,7 @@ const editableScript = ref(
 
 // MulmoViewer state
 const viewerData = ref<ViewerData | null>(null);
-const viewerRef = ref<InstanceType<typeof MulmoView> | null>(null);
+// const viewerRef = ref<InstanceType<typeof MulmoView> | null>(null);
 const audioLang = ref("en");
 const textLang = ref("en");
 const playbackSpeed = ref(1);

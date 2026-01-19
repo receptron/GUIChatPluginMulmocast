@@ -29,7 +29,7 @@ const props = defineProps<{
 }>();
 
 const firstBeatImage = computed(() => {
-  const firstBeat = props.result.data?.mulmoScript?.beats?.[0] as any;
+  const firstBeat = props.result.data?.mulmoScript?.beats?.[0];
   if (firstBeat?.id && props.result.data?.images?.[firstBeat.id]) {
     return props.result.data.images[firstBeat.id];
   }
