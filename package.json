@@ -3,16 +3,19 @@
   "version": "0.0.1",
   "description": "Mulmocast presentation plugin for GUI Chat applications",
   "type": "module",
-  "main": "dist/core.js",
-  "types": "dist/core.d.ts",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "import": "./dist/core.js",
-      "types": "./dist/core.d.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
     },
     "./vue": {
+      "types": "./dist/vue/index.d.ts",
       "import": "./dist/vue.js",
-      "types": "./dist/vue.d.ts"
+      "require": "./dist/vue.cjs"
     },
     "./style.css": "./dist/style.css"
   },
@@ -21,7 +24,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "vite build && vue-tsc --declaration --emitDeclarationOnly --outDir dist",
+    "build": "vite build && vue-tsc -p tsconfig.build.json --emitDeclarationOnly",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -49,7 +52,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/snakajima/GUIChatPluginMulmocast.git"
+    "url": "https://github.com/receptron/GUIChatPluginMulmocast.git"
   },
   "license": "MIT"
 }

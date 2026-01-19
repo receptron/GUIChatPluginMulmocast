@@ -1,5 +1,7 @@
 # @gui-chat-plugin/mulmocast
 
+[![npm version](https://badge.fury.io/js/%40gui-chat-plugin%2Fmulmocast.svg)](https://www.npmjs.com/package/@gui-chat-plugin/mulmocast)
+
 Mulmocast presentation plugin for GUI Chat applications. Create presentations with AI-generated images and optional video output.
 
 ## Features
@@ -107,6 +109,14 @@ yarn build
 # Lint
 yarn lint
 ```
+
+## Test Prompts
+
+Try these prompts to test the plugin:
+
+1. "Create a short presentation about the history of the internet with 3 slides"
+2. "Make a presentation explaining how photosynthesis works"
+3. "Generate a presentation introducing the solar system to children"
 
 ## License
 
