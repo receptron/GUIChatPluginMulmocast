@@ -1,6 +1,6 @@
 {
   "name": "@gui-chat-plugin/mulmocast",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Mulmocast presentation plugin for GUI Chat applications",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -30,22 +30,22 @@
   },
   "dependencies": {
     "gui-chat-protocol": "^0.0.1",
-    "mulmocast": "^0.0.1",
-    "mulmocast-viewer": "^0.0.1",
-    "uuid": "^11.0.5"
+    "mulmocast": "^2.1.17",
+    "mulmocast-viewer": "^0.1.11",
+    "uuid": "^13.0.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.0.0",
-    "@types/node": "^22.10.5",
-    "@types/uuid": "^10.0.0",
-    "@vitejs/plugin-vue": "^5.2.1",
+    "@types/node": "^25.0.9",
+    "@types/uuid": "^11.0.0",
+    "@vitejs/plugin-vue": "^6.0.3",
     "eslint": "^9.17.0",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2",
-    "vite": "^6.0.7",
+    "vite": "^7.3.1",
     "vite-plugin-dts": "^4.4.0",
     "vue": "^3.5.13",
-    "vue-tsc": "^2.2.0"
+    "vue-tsc": "^3.2.2"
   },
   "peerDependencies": {
     "vue": "^3.5.0"
