@@ -120,7 +120,8 @@ import { ref, computed, onUnmounted, watch } from "vue";
 import { v4 as uuidv4 } from "uuid";
 import type { ToolResult } from "gui-chat-protocol";
 import type { MulmocastToolData } from "../core/types";
-import { MulmoViewer, type ViewerData } from "mulmocast-viewer";
+import { MulmoViewer } from "mulmocast-viewer";
+import type { MulmoViewerData } from "@mulmocast/types";
 
 const props = defineProps<{
   selectedResult: ToolResult<MulmocastToolData> | null;
@@ -147,7 +148,7 @@ const editableScript = ref(
 );
 
 // MulmoViewer state
-const viewerData = ref<ViewerData | null>(null);
+const viewerData = ref<MulmoViewerData | null>(null);
 // const viewerRef = ref<InstanceType<typeof MulmoView> | null>(null);
 const audioLang = ref("en");
 const textLang = ref("en");
@@ -274,7 +275,7 @@ watch(
         throw new Error("Failed to load viewer JSON");
       }
 
-      viewerData.value = (await response.json()) as ViewerData;
+      viewerData.value = (await response.json()) as MulmoViewerData;
     } catch (error) {
       console.error("Viewer JSON loading failed:", error);
       viewerData.value = null;
