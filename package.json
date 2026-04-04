@@ -31,29 +31,29 @@
   },
   "dependencies": {
     "@mulmocast/types": "^2.6.5",
-    "gui-chat-protocol": "^0.0.3",
+    "gui-chat-protocol": "^0.0.4",
     "mulmocast": "^2.6.5",
     "mulmocast-viewer": "^0.2.4",
     "uuid": "^13.0.0"
   },
   "devDependencies": {
-    "@eslint/js": "^9.0.0",
-    "@tailwindcss/vite": "^4.0.0",
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.2.2",
     "@types/node": "^25.0.9",
     "@types/uuid": "^11.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "@vitejs/plugin-vue": "^6.0.3",
-    "eslint": "^9.17.0",
-    "eslint-plugin-vue": "^10.0.0",
-    "globals": "^17.0.0",
-    "tailwindcss": "^4.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.58.0",
+    "@typescript-eslint/parser": "^8.58.0",
+    "@vitejs/plugin-vue": "^6.0.5",
+    "eslint": "^10.1.0",
+    "eslint-plugin-vue": "^10.8.0",
+    "globals": "^17.4.0",
+    "tailwindcss": "^4.2.2",
     "typescript": "~6.0.2",
-    "vite": "^7.3.1",
+    "vite": "^8.0.3",
     "vite-plugin-dts": "^4.4.0",
-    "vue": "^3.5.13",
-    "vue-eslint-parser": "^10.0.0",
-    "vue-tsc": "^3.2.2"
+    "vue": "^3.5.31",
+    "vue-eslint-parser": "^10.4.0",
+    "vue-tsc": "^3.2.6"
   },
   "peerDependencies": {
     "vue": "^3.5.0"
