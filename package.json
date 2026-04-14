@@ -1,6 +1,6 @@
 {
   "name": "@gui-chat-plugin/mulmocast",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Mulmocast presentation plugin for GUI Chat applications",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -31,7 +31,7 @@
   },
   "dependencies": {
     "@mulmocast/types": "^2.6.5",
-    "gui-chat-protocol": "^0.0.4",
+    "gui-chat-protocol": "^0.1.0",
     "mulmocast": "^2.6.5",
     "mulmocast-viewer": "^0.2.4",
     "uuid": "^13.0.0"
