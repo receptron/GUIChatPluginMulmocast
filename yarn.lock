@@ -520,10 +520,10 @@
   dependencies:
     zod "^4.3.5"
 
-"@mulmocast/types@^2.6.13":
-  version "2.6.13"
-  resolved "https://registry.yarnpkg.com/@mulmocast/types/-/types-2.6.13.tgz#5a995ab437a23754302ecb60cd99bbdd4d3a128a"
-  integrity sha512-/Z+MXviFAGAtDVejg3WKrMZmonEDoRUNgOL06WEEwkD8QTAMjDl+p/U2eKOEdudIOV6A27wwj/4yzYIFh1llmA==
+"@mulmocast/types@^2.6.14":
+  version "2.6.14"
+  resolved "https://registry.yarnpkg.com/@mulmocast/types/-/types-2.6.14.tgz#c03b3ab73fbf32f60526f26106a07f44e368c2a7"
+  integrity sha512-JFB9EbcA+p/Jxu/5Jimkz5Un/k6V+9E1sHmHDtYY6BOa+OhLF9yIkWbAkN4TjifNt4fN42/OhMB4gTl/32Ha9Q==
   dependencies:
     zod "^4.3.5"
 
@@ -4410,10 +4410,15 @@ util-deprecate@^1.0.1, util-deprecate@^1.0.2, util-deprecate@~1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==
 
-uuid@*, uuid@^13.0.0:
+uuid@*:
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-13.0.0.tgz#263dc341b19b4d755eb8fe36b78d95a6b65707e8"
   integrity sha512-XQegIaBTVUjSHliKqcnFqYypAd4S+WCYt5NIeRs6w/UAry7z8Y9j5ZwRRL4kzq9U3sD6v+85er9FvkEaBpji2w==
+
+uuid@^14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-14.0.0.tgz#0af883220163d264ffe0c084f6b8a89b9666966d"
+  integrity sha512-Qo+uWgilfSmAhXCMav1uYFynlQO7fMFiMVZsQqZRMIXp0O7rR7qjkj+cPvBHLgBqi960QCoo/PH2/6ZtVqKvrg==
 
 vary@^1, vary@^1.1.2:
   version "1.1.2"
