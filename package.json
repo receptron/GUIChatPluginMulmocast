@@ -1,6 +1,6 @@
 {
   "name": "@gui-chat-plugin/mulmocast",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Mulmocast presentation plugin for GUI Chat applications",
   "type": "module",
   "main": "./dist/index.cjs",
