@@ -30,9 +30,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mulmocast/types": "^2.8.0",
+    "@mulmocast/types": "^2.9.0",
     "gui-chat-protocol": "^1.1.0",
-    "mulmocast": "^2.8.0",
+    "mulmocast": "^2.9.0",
     "mulmocast-viewer": "^0.2.4",
     "uuid": "^14.0.1"
   },
