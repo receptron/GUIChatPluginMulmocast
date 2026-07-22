@@ -1,6 +1,6 @@
 {
   "name": "@gui-chat-plugin/mulmocast",
-  "version": "0.5.1",
+  "version": "1.0.0",
   "description": "Mulmocast presentation plugin for GUI Chat applications",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -30,30 +30,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@mulmocast/types": "^2.8.0",
-    "gui-chat-protocol": "^0.4.0",
-    "mulmocast": "^2.8.0",
+    "@mulmocast/types": "^2.9.0",
+    "gui-chat-protocol": "^1.1.0",
+    "mulmocast": "^2.9.0",
     "mulmocast-viewer": "^0.2.4",
     "uuid": "^14.0.1"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
-    "@tailwindcss/vite": "^4.3.2",
+    "@tailwindcss/vite": "^4.3.3",
     "@types/node": "^26.1.1",
     "@types/uuid": "^11.0.0",
-    "@typescript-eslint/eslint-plugin": "^8.64.0",
-    "@typescript-eslint/parser": "^8.64.0",
+    "@typescript-eslint/eslint-plugin": "^8.65.0",
+    "@typescript-eslint/parser": "^8.65.0",
     "@vitejs/plugin-vue": "^6.0.8",
     "eslint": "^10.7.0",
-    "eslint-plugin-vue": "^10.9.2",
+    "eslint-plugin-vue": "^10.10.0",
     "globals": "^17.7.0",
-    "tailwindcss": "^4.3.2",
+    "tailwindcss": "^4.3.3",
     "typescript": "~6.0.3",
-    "vite": "^8.1.4",
+    "vite": "^8.1.5",
     "vite-plugin-dts": "^5.0.3",
-    "vue": "^3.5.39",
+    "vue": "^3.5.40",
     "vue-eslint-parser": "^10.4.1",
-    "vue-tsc": "^3.3.7"
+    "vue-tsc": "^3.3.8"
   },
   "peerDependencies": {
     "vue": "^3.5.0"
