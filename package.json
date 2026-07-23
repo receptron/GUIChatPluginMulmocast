@@ -62,5 +62,8 @@
     "type": "git",
     "url": "https://github.com/receptron/GUIChatPluginMulmocast.git"
   },
-  "license": "MIT"
+  "license": "MIT",
+  "resolutions": {
+    "@hono/node-server": "^2.0.5"
+  }
 }
