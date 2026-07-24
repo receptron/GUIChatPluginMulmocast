@@ -16,8 +16,11 @@ Mulmocast presentation plugin for GUI Chat applications. Create presentations wi
 ## Installation
 
 ```bash
-yarn add @gui-chat-plugin/mulmocast
+yarn add @gui-chat-plugin/mulmocast gui-chat-protocol
 ```
+
+> `gui-chat-protocol` is a peer dependency — install it alongside the plugin; the host application provides the runtime and this plugin only declares the compatible range.
+
 
 ## Usage
 
