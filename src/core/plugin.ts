@@ -4,15 +4,19 @@ import { v4 as uuidv4 } from "uuid";
 import type { MulmocastArgs, MulmocastToolData, MulmocastResult } from "./types";
 import { TOOL_NAME, TOOL_DEFINITION } from "./definition";
 
+// context is nullable on purpose: hosts that run the plugin without client-side
+// state (MulmoClaude's server bridge) pass an empty or missing context, and
+// reading through it unguarded threw a TypeError instead of returning a result.
 export const showPresentation = async (
-  context: ToolContext,
+  context: ToolContext | null | undefined,
   args: MulmocastArgs,
 ): Promise<MulmocastResult> => {
   const { title, beats } = args;
+  const app = context?.app;
 
   // Reference images for aspect ratio
-  const blankImageBase64 = context.app?.loadBlankImageBase64
-    ? await context.app.loadBlankImageBase64()
+  const blankImageBase64 = app?.loadBlankImageBase64
+    ? await app.loadBlankImageBase64()
     : "";
   const imageRefs: string[] = blankImageBase64 ? [blankImageBase64] : [];
 
@@ -27,14 +31,14 @@ export const showPresentation = async (
   // Generate images for each beat concurrently
   const imagesMap: Record<string, string> = {};
 
-  if (context.app?.generateImageWithBackend) {
+  if (app?.generateImageWithBackend) {
     const imagePromises = beatsWithIds.map(async (beat) => {
       const prompt =
         beat.imagePrompt ||
         `generate image appropriate for the text. <text>${beat.text}</text>. Let the art convey the story and emotions without text. Use the last image for the aspect ratio.`;
 
       try {
-        const result = await context.app!.generateImageWithBackend!(
+        const result = await app!.generateImageWithBackend!(
           prompt,
           imageRefs,
           context,
