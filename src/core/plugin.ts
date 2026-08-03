@@ -1,7 +1,8 @@
 import type { ToolContext, ToolPluginCore } from "gui-chat-protocol";
-import type { MulmoScript } from "mulmocast";
+import { mulmoScriptSchema } from "mulmocast";
 import { v4 as uuidv4 } from "uuid";
 import type { MulmocastArgs, MulmocastToolData, MulmocastResult } from "./types";
+import { isGeneratedImageResponse, readBlankImageBase64 } from "./hostResponse";
 import { TOOL_NAME, TOOL_DEFINITION } from "./definition";
 
 // context is nullable on purpose: hosts that run the plugin without client-side
@@ -16,7 +17,7 @@ export const showPresentation = async (
 
   // Reference images for aspect ratio
   const blankImageBase64 = app?.loadBlankImageBase64
-    ? await app.loadBlankImageBase64()
+    ? readBlankImageBase64(await app.loadBlankImageBase64())
     : "";
   const imageRefs: string[] = blankImageBase64 ? [blankImageBase64] : [];
 
@@ -44,7 +45,7 @@ export const showPresentation = async (
           context,
         );
 
-        if (result.success && result.imageData) {
+        if (isGeneratedImageResponse(result) && result.success && result.imageData) {
           return { id: beat.id, imageData: result.imageData };
         }
       } catch (error) {
@@ -63,7 +64,7 @@ export const showPresentation = async (
   }
 
   // Construct MulmoScript object
-  const mulmoScript = {
+  const parsedScript = mulmoScriptSchema.safeParse({
     $mulmocast: { version: "1.1" },
     canvasSize: {
       width: 1536,
@@ -93,7 +94,16 @@ export const showPresentation = async (
     title,
     lang: args.lang,
     beats: beatsWithIds,
-  } as unknown as MulmoScript;
+  });
+
+  if (!parsedScript.success) {
+    return {
+      message: `Could not build a presentation for "${title}": ${parsedScript.error.message}`,
+      instructions:
+        "Tell the user the presentation could not be built and ask them to describe the beats again.",
+    };
+  }
+  const mulmoScript = parsedScript.data;
 
   const message = `Mulmocast has processed the MulmoScript for "${title}" with ${beats.length} beats. Movie generation will begin automatically.`;
 
