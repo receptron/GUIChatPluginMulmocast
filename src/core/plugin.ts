@@ -1,5 +1,5 @@
 import type { ToolContext, ToolPluginCore } from "gui-chat-protocol";
-import { mulmoScriptSchema } from "mulmocast";
+import { mulmoScriptSchema } from "mulmocast/browser";
 import { v4 as uuidv4 } from "uuid";
 import type { MulmocastArgs, MulmocastToolData, MulmocastResult } from "./types";
 import { isGeneratedImageResponse, readBlankImageBase64 } from "./hostResponse";
