@@ -8,17 +8,12 @@ import { TOOL_NAME, TOOL_DEFINITION } from "./definition";
 // context is nullable on purpose: hosts that run the plugin without client-side
 // state (MulmoClaude's server bridge) pass an empty or missing context, and
 // reading through it unguarded threw a TypeError instead of returning a result.
-export const showPresentation = async (
-  context: ToolContext | null | undefined,
-  args: MulmocastArgs,
-): Promise<MulmocastResult> => {
+export const showPresentation = async (context: ToolContext | null | undefined, args: MulmocastArgs): Promise<MulmocastResult> => {
   const { title, beats } = args;
   const app = context?.app;
 
   // Reference images for aspect ratio
-  const blankImageBase64 = app?.loadBlankImageBase64
-    ? readBlankImageBase64(await app.loadBlankImageBase64())
-    : "";
+  const blankImageBase64 = app?.loadBlankImageBase64 ? readBlankImageBase64(await app.loadBlankImageBase64()) : "";
   const imageRefs: string[] = blankImageBase64 ? [blankImageBase64] : [];
 
   // Generate beat objects with UUIDs first
@@ -39,11 +34,7 @@ export const showPresentation = async (
         `generate image appropriate for the text. <text>${beat.text}</text>. Let the art convey the story and emotions without text. Use the last image for the aspect ratio.`;
 
       try {
-        const result = await app!.generateImageWithBackend!(
-          prompt,
-          imageRefs,
-          context,
-        );
+        const result = await app!.generateImageWithBackend!(prompt, imageRefs, context);
 
         if (isGeneratedImageResponse(result) && result.success && result.imageData) {
           return { id: beat.id, imageData: result.imageData };
@@ -99,8 +90,7 @@ export const showPresentation = async (
   if (!parsedScript.success) {
     return {
       message: `Could not build a presentation for "${title}": ${parsedScript.error.message}`,
-      instructions:
-        "Tell the user the presentation could not be built and ask them to describe the beats again.",
+      instructions: "Tell the user the presentation could not be built and ask them to describe the beats again.",
     };
   }
   const mulmoScript = parsedScript.data;
@@ -110,8 +100,7 @@ export const showPresentation = async (
   return {
     message,
     title,
-    instructions:
-      "Acknowledge that all the images were successfully generated and that the movie is being generated.",
+    instructions: "Acknowledge that all the images were successfully generated and that the movie is being generated.",
     data: {
       mulmoScript,
       images: imagesMap,
@@ -123,8 +112,7 @@ export const pluginCore: ToolPluginCore<MulmocastToolData, unknown, MulmocastArg
   toolDefinition: TOOL_DEFINITION,
   execute: showPresentation,
   generatingMessage: "Processing with Mulmocast...",
-  waitingMessage:
-    "Tell the user that the script was written and we are generating images and video with Mulmocast.",
+  waitingMessage: "Tell the user that the script was written and we are generating images and video with Mulmocast.",
   isEnabled: () => true,
   backends: ["imageGen", "mulmocast"],
 };

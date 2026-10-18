@@ -2,10 +2,7 @@
   <div class="mulmocast-container">
     <div class="mulmocast-content-wrapper">
       <div class="p-4">
-        <div
-          v-if="selectedResult?.data?.mulmoScript?.title"
-          class="header-row"
-        >
+        <div v-if="selectedResult?.data?.mulmoScript?.title" class="header-row">
           <h1 class="document-title">
             {{ selectedResult.data.mulmoScript.title }}
           </h1>
@@ -22,16 +19,8 @@
               <span class="material-icons">movie</span>
               Generate Movie
             </button>
-            <button
-              v-else
-              @click="downloadMovie"
-              :disabled="!moviePath"
-              :class="['download-btn', moviePath ? 'download-btn-blue' : 'download-btn-disabled']"
-            >
-              <span
-                class="material-icons"
-                :class="{ 'animate-spin': isGeneratingMovie }"
-              >
+            <button v-else @click="downloadMovie" :disabled="!moviePath" :class="['download-btn', moviePath ? 'download-btn-blue' : 'download-btn-disabled']">
+              <span class="material-icons" :class="{ 'animate-spin': isGeneratingMovie }">
                 {{ isGeneratingMovie ? "hourglass_empty" : "download" }}
               </span>
               Movie
@@ -39,23 +28,10 @@
           </div>
         </div>
         <template v-if="selectedResult?.data?.mulmoScript?.beats">
-          <div
-            v-for="(beat, index) in selectedResult.data.mulmoScript.beats"
-            :key="(beat as any).id || index"
-            class="beat-container"
-          >
-            <div v-if="index === 0 && movieError" class="error-message">
-              Movie generation failed: {{ movieError }}
-            </div>
+          <div v-for="(beat, index) in selectedResult.data.mulmoScript.beats" :key="(beat as any).id || index" class="beat-container">
+            <div v-if="index === 0 && movieError" class="error-message">Movie generation failed: {{ movieError }}</div>
             <div v-else-if="index === 0 && viewerData" class="viewer-container">
-              <button
-                v-if="currentPage > 0"
-                @click="previousPage"
-                class="nav-button nav-button-prev"
-                aria-label="Previous page"
-              >
-                ‹
-              </button>
+              <button v-if="currentPage > 0" @click="previousPage" class="nav-button nav-button-prev" aria-label="Previous page">‹</button>
               <MulmoViewer
                 ref="viewerRef"
                 :key="`viewer-${currentPage}`"
@@ -100,17 +76,9 @@
 
     <details class="script-source" v-if="selectedResult?.data?.mulmoScript">
       <summary>Edit MulmoScript Source</summary>
-      <div v-if="parseError" class="error">
-        <strong>Parse Error:</strong> {{ parseError }}
-      </div>
-      <textarea
-        v-model="editableScript"
-        class="script-editor"
-        spellcheck="false"
-      ></textarea>
-      <button @click="applyScript" class="apply-btn" :disabled="!hasChanges">
-        Apply Changes
-      </button>
+      <div v-if="parseError" class="error"><strong>Parse Error:</strong> {{ parseError }}</div>
+      <textarea v-model="editableScript" class="script-editor" spellcheck="false"></textarea>
+      <button @click="applyScript" class="apply-btn" :disabled="!hasChanges">Apply Changes</button>
     </details>
   </div>
 </template>
@@ -130,9 +98,7 @@ const props = defineProps<{
 }>();
 
 // Extract mulmocast-specific config
-const autoGenerateMovies = computed(
-  () => props.pluginConfigs?.mulmocast ?? true,
-);
+const autoGenerateMovies = computed(() => props.pluginConfigs?.mulmocast ?? true);
 
 const emit = defineEmits<{
   updateResult: [result: ToolResult<MulmocastToolData>];
@@ -143,9 +109,7 @@ const movieUrl = ref<string | null>(null);
 const isGeneratingMovie = ref(false);
 const movieError = ref<string | null>(null);
 const parseError = ref<string | null>(null);
-const editableScript = ref(
-  JSON.stringify(props.selectedResult?.data?.mulmoScript, null, 2) || "",
-);
+const editableScript = ref(JSON.stringify(props.selectedResult?.data?.mulmoScript, null, 2) || "");
 
 // MulmoViewer state
 const viewerData = ref<MulmoViewerData | null>(null);
@@ -157,9 +121,7 @@ const currentPage = ref(0);
 
 // moviePath comes from selectedResult now
 const moviePath = computed(() => props.selectedResult?.data?.moviePath || null);
-const viewerJsonPath = computed(
-  () => props.selectedResult?.data?.viewerJsonPath || null,
-);
+const viewerJsonPath = computed(() => props.selectedResult?.data?.viewerJsonPath || null);
 const basePath = computed(() => {
   if (!viewerJsonPath.value) return "";
   const outputIndex = viewerJsonPath.value.indexOf("/output/");
@@ -173,11 +135,7 @@ const basePath = computed(() => {
 
 // Check if script has been modified
 const hasChanges = computed(() => {
-  const currentScript = JSON.stringify(
-    props.selectedResult?.data?.mulmoScript,
-    null,
-    2,
-  );
+  const currentScript = JSON.stringify(props.selectedResult?.data?.mulmoScript, null, 2);
   return editableScript.value !== currentScript;
 });
 
@@ -223,8 +181,7 @@ async function triggerMovieGeneration() {
       emit("updateResult", updatedResult);
     } else {
       const error = await movieResponse.json();
-      movieError.value =
-        error.details || error.error || "Failed to generate movie";
+      movieError.value = error.details || error.error || "Failed to generate movie";
     }
   } catch (error) {
     movieError.value = error instanceof Error ? error.message : "Unknown error";
@@ -237,14 +194,7 @@ async function triggerMovieGeneration() {
 watch(
   () => props.selectedResult?.data?.mulmoScript,
   async (mulmoScript) => {
-    if (
-      !mulmoScript ||
-      props.selectedResult?.data?.moviePath ||
-      isGeneratingMovie.value ||
-      !props.selectedResult ||
-      autoGenerateMovies.value === false
-    )
-      return;
+    if (!mulmoScript || props.selectedResult?.data?.moviePath || isGeneratingMovie.value || !props.selectedResult || autoGenerateMovies.value === false) return;
 
     await triggerMovieGeneration();
   },
@@ -320,11 +270,7 @@ watch(
 const downloadMulmoScript = () => {
   if (!props.selectedResult?.data?.mulmoScript) return;
 
-  const jsonString = JSON.stringify(
-    props.selectedResult.data.mulmoScript,
-    null,
-    2,
-  );
+  const jsonString = JSON.stringify(props.selectedResult.data.mulmoScript, null, 2);
   const blob = new Blob([jsonString], { type: "application/json" });
   const url = URL.createObjectURL(blob);
   const link = document.createElement("a");
@@ -377,9 +323,7 @@ const downloadMovie = async () => {
     URL.revokeObjectURL(url);
   } catch (error) {
     console.error("Movie download failed:", error);
-    alert(
-      `Failed to download movie: ${error instanceof Error ? error.message : "Unknown error"}`,
-    );
+    alert(`Failed to download movie: ${error instanceof Error ? error.message : "Unknown error"}`);
   }
 };
 

@@ -19,18 +19,9 @@ export const plugin: ToolPlugin<MulmocastToolData, unknown, MulmocastArgs> = {
   systemPrompt: SYSTEM_PROMPT,
 };
 
-export type {
-  MulmocastToolData,
-  MulmocastBeat,
-  MulmocastArgs,
-  MulmocastResult,
-} from "../core/types";
+export type { MulmocastToolData, MulmocastBeat, MulmocastArgs, MulmocastResult } from "../core/types";
 
-export {
-  TOOL_DEFINITION,
-  executeMulmocast,
-  pluginCore,
-} from "../core/plugin";
+export { TOOL_DEFINITION, executeMulmocast, pluginCore } from "../core/plugin";
 
 export { samples } from "../core/samples";
 

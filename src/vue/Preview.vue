@@ -1,15 +1,7 @@
 <template>
   <div class="bg-green-100 rounded overflow-hidden">
-    <div
-      v-if="firstBeatImage"
-      class="w-full aspect-video bg-gray-200"
-      style="position: relative"
-    >
-      <img
-        :src="`data:image/png;base64,${firstBeatImage}`"
-        :alt="result.data?.mulmoScript?.title || 'Presentation'"
-        class="w-full h-full object-cover"
-      />
+    <div v-if="firstBeatImage" class="w-full aspect-video bg-gray-200" style="position: relative">
+      <img :src="`data:image/png;base64,${firstBeatImage}`" :alt="result.data?.mulmoScript?.title || 'Presentation'" class="w-full h-full object-cover" />
     </div>
     <div class="p-2">
       <div class="text-green-600 font-medium text-sm truncate">
