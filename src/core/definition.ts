@@ -3,8 +3,7 @@ export const TOOL_NAME = "showPresentation";
 export const TOOL_DEFINITION = {
   type: "function" as const,
   name: TOOL_NAME,
-  description:
-    "Let MulmoCast to process a given MulmoScript to generate a presentation of a given topic or story.",
+  description: "Let MulmoCast to process a given MulmoScript to generate a presentation of a given topic or story.",
   parameters: {
     type: "object" as const,
     properties: {
@@ -25,8 +24,7 @@ export const TOOL_DEFINITION = {
             },
             imagePrompt: {
               type: "string",
-              description:
-                "Optional prompt to be used to generate an image. Typically 50 to 70 words. Do not specify the image style.",
+              description: "Optional prompt to be used to generate an image. Typically 50 to 70 words. Do not specify the image style.",
             },
           },
           required: ["text"],
