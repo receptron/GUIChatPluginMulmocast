@@ -1,6 +1,7 @@
 # @gui-chat-plugin/mulmocast
 
 [![npm version](https://badge.fury.io/js/%40gui-chat-plugin%2Fmulmocast.svg)](https://www.npmjs.com/package/@gui-chat-plugin/mulmocast)
+[![scoria](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/receptron/GUIChatPluginMulmocast/badges/scoria.json)](https://github.com/receptron/GUIChatPluginMulmocast/actions/workflows/scoria.yml)
 
 Mulmocast presentation plugin for GUI Chat applications. Create presentations with AI-generated images and optional video output.
 
