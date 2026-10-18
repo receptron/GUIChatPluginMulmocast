@@ -1,6 +1,6 @@
 {
   "name": "@gui-chat-plugin/mulmocast",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Mulmocast presentation plugin for GUI Chat applications",
   "type": "module",
   "main": "./dist/index.cjs",
@@ -65,7 +65,7 @@
     "vue-tsc": "^3.3.13"
   },
   "peerDependencies": {
-    "gui-chat-protocol": "^2.1.0",
+    "gui-chat-protocol": "^2.3.0",
     "vue": "^3.5.0"
   },
   "repository": {
