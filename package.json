@@ -74,7 +74,6 @@
   },
   "license": "MIT",
   "resolutions": {
-    "@hono/node-server": "^2.0.5",
     "minimatch": "^11.0.5",
     "glob": "^14.0.4"
   },
